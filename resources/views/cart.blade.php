@@ -29,36 +29,10 @@
                 <div class="cart-wrapper wow fadeInUp">
                     <div class="cart-table table-responsive">
                         <table class="table">
-                            <tbody>
-                                @if (session('cart'))
-                                @foreach (session('cart') as $id => $details)
-                                <tr>
-                                    <td class="thumbnail-title">
-                                        <img src="{{ asset($details['image']) }}" alt="{{ $details['name'] }} Image">
-                                        <span class="title">{{ $details['name'] }}</span>
-                                    </td>
-
-                                    <td class="quantity">
-                                        <div class="quantity-input">
-                                            <button class="quantity-down"><i class="far fa-minus"></i></button>
-                                            <input class="quantity" type="text" value="{{ $details['quantity'] }}"
-                                                name="quantity" readonly>
-                                            <button class="quantity-up"><i class="far fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="subtotal">${{ number_format($details['price'] * $details['quantity'], 2)
-                                        }}</td>
-                                    <td class="remove">
-                                        <a href="{{ route('cart.remove', $id) }}"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @else
-                                <tr>
-                                    <td colspan="5">Your cart is empty!</td>
-                                </tr>
-                                @endif
+                            <tbody id="cart-items">
+                            <!-- Dynamically Generated Rows -->
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -98,92 +72,6 @@
                         </tbody>
                     </table>
 
-                    <script>
-                        // Function to update the cart total and order total
-                        function updateCartTotal() {
-                            let cartSubtotal = 0;
-                        
-                            // Loop through each row and add up the subtotal
-                            document.querySelectorAll('tr').forEach(row => {
-                                let subtotalText = row.querySelector('.subtotal').textContent;
-                                let subtotal = parseFloat(subtotalText.replace('$', '').replace(',', '')); // Get subtotal value
-                        
-                                // Check if subtotal is a valid number
-                                if (!isNaN(subtotal)) {
-                                    cartSubtotal += subtotal; // Aggregate subtotal
-                                }
-                            });
-                        
-                            // Update the cart subtotal in the DOM
-                            document.getElementById('cart-subtotal').textContent = `$${cartSubtotal.toFixed(2)}`;
-                        
-                            // Shipping fee (fixed value)
-                            let shippingFee = 50;
-                        
-                            // Calculate the order total (cart subtotal + shipping fee)
-                            let orderTotal = cartSubtotal + shippingFee;
-                        
-                            // Update the order total in the DOM
-                            document.getElementById('order-total').textContent = `$${orderTotal.toFixed(2)}`;
-                        }
-                        
-                        // Update cart button click event
-                        document.getElementById('update-cart').addEventListener('click', function (e) {
-                            e.preventDefault();
-                            console.log('Update Cart button clicked');
-                        
-                            let cartData = [];
-                        
-                            // Loop through each cart row and collect the item id and updated quantity
-                            document.querySelectorAll('tr').forEach(row => {
-                                let itemId = row.dataset.id; // Get the item ID from data-id attribute
-                        
-                                // Find the input field inside the row for quantity
-                                let quantityInput = row.querySelector('.quantity-input input');
-                                
-                                // Check if the quantity input field exists
-                                if (quantityInput) {
-                                    let quantity = parseInt(quantityInput.value); // Get the current quantity
-                        
-                                    // Push the item data into the cartData array
-                                    cartData.push({
-                                        id: itemId,
-                                        quantity: quantity
-                                    });
-                                } else {
-                                    console.log('Quantity input not found for row with ID:', itemId);
-                                }
-                            });
-                        
-                            // Send updated cart data to the server
-                            updateCartItems(cartData);
-                        
-                            // Recalculate the totals
-                            updateCartTotal(); // Recalculate totals after sending update
-                        });
-                        
-                        // Function to send updated cart items to the server
-                        function updateCartItems(cartData) {
-                            fetch(`/cart/update-multiple`, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                                },
-                                body: JSON.stringify({
-                                    items: cartData
-                                })
-                            }).then(response => response.json())
-                              .then(data => {
-                                  if (data.success) {
-                                      console.log('Cart updated successfully');
-                                      // After a successful response, update totals again
-                                      updateCartTotal(); // Update totals again after successful response
-                                  }
-                              }).catch(error => console.log('Error:', error));
-                        }
-                    </script>
-
                     <button class="theme-btn style-one">Proceed to checkout</button>
                 </div>
             </div>
@@ -191,5 +79,77 @@
     </div>
 </section>
 <!--====== End Cart Section ======-->
+<script>
+    let cart = [];
+
+    function fetchCartItems() {
+        fetch("{{ route('cart.items') }}")
+            .then((response) => response.json())
+            .then((data) => {
+                // Convert object to array
+                cart = Object.values(data);
+                renderCart();
+            })
+            .catch((error) => console.error("Error fetching cart items:", error));
+    }
+
+    // Function to update cart table dynamically
+    function renderCart() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        cartItemsContainer.innerHTML = ""; // Clear current items
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = `
+                <tr>
+                    <td colspan="5">Your cart is empty!</td>
+                </tr>
+            `;
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            cartItemsContainer.innerHTML += `
+                <tr data-id="${index + 1}">
+                    <td class="thumbnail-title">
+                        <img src="${item.image}" alt="${item.name} Image">
+                        <span class="title">${item.name}</span>
+                    </td>
+                    <td class="quantity">
+                        <div class="quantity-input">
+                            <button class="quantity-down" data-index="${index}"><i class="far fa-minus"></i></button>
+                            <input class="quantity" type="text" value="${item.quantity}" readonly>
+                            <button class="quantity-up" data-index="${index}"><i class="far fa-plus"></i></button>
+                        </div>
+                    </td>
+                    <td class="subtotal">$${(item.price * item.quantity).toFixed(2)}</td>
+                    <td class="remove">
+                        <button class="remove-item" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    // Event listeners for cart actions
+    document.getElementById("cart-items").addEventListener("click", (event) => {
+        const index = event.target.closest("button")?.dataset.index;
+
+        if (event.target.closest(".quantity-up")) {
+            cart[index].quantity++;
+            renderCart();
+        } else if (event.target.closest(".quantity-down")) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+            }
+            renderCart();
+        } else if (event.target.closest(".remove-item")) {
+            cart.splice(index, 1); // Remove item
+            renderCart();
+        }
+    });
+
+    // Initial render
+    fetchCartItems();
+</script>
 
 @endsection

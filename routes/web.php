@@ -13,6 +13,8 @@ Route::get('/menu',[MenuController::class,'menu'])->name('menu');
 
 Route::get('/cart',[CartController::class,'index'])->name('cart');
 
+Route::get('/cart/items',[CartController::class,'cartItems'])->name('cart.items');
+
 Route::post('/cart/add',[CartController::class,'addToCart'])->name('cart.add');
 
 Route::get('cart/remove/{id}',[CartController::class,'removeFromCart'])->name('cart.remove');

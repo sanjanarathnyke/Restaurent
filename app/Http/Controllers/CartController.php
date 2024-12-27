@@ -12,6 +12,12 @@ class CartController extends Controller
         return view('cart');
     }
 
+    public function cartItems()
+    {
+        $cart = session('cart', []);
+        return response()->json($cart);
+    }
+
 
     public function addToCart(Request $request)
     {
