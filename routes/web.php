@@ -15,6 +15,10 @@ Route::get('/cart',[CartController::class,'index'])->name('cart');
 
 Route::get('/cart/items',[CartController::class,'cartItems'])->name('cart.items');
 
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+
+Route::post('/cart/delete', [CartController::class, 'delete'])->name('cart.delete');
+
 Route::post('/cart/add',[CartController::class,'addToCart'])->name('cart.add');
 
 Route::get('cart/remove/{id}',[CartController::class,'removeFromCart'])->name('cart.remove');

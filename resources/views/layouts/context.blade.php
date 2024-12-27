@@ -6,6 +6,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="description" content="fast food, burger, pizza">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!--====== Title ======-->
         <title>Foodix - Fast Foods & Restaurants HTML Template</title>
         <!--====== Favicon Icon ======-->
@@ -95,18 +96,18 @@
                                 <nav class="main-menu">
                                     <ul>
                                         <li class="menu-item has-children"><a href="{{ route('welcome') }}">Home</a>
-                                      
+
                                         </li>
                                         <li class="menu-item has-children"><a href="{{ route('menu') }}">Menu</a>
-                                      
+
                                         </li>
                                         <li class="menu-item has-children"><a href="{{ route('cart.show') }}">cart</a>
-                                        
+
                                         </li>
                                         <li class="menu-item has-children"><a href="{{ route('checkout') }}">checkout</a>
-                                            
+
                                         </li>
-                                       
+
                                     </ul>
                                 </nav>
                                 <!--=== Nav Button ===-->
@@ -116,7 +117,7 @@
                             </div>
                             <!--=== Nav Right Item ===-->
                             <div class="nav-right-item">
-    
+
                                 <div class="cart-button">
                                     <i class="far fa-shopping-cart"></i>
                                 </div>
@@ -132,7 +133,7 @@
             </div>
         </header><!--====== End Header Area ======-->
         <!--====== Start Hero Section ======-->
-        
+
         @yield('content')
 
         <!--====== Start Footer ======-->
@@ -155,8 +156,8 @@
                                     <div class="footer-logo mb-25">
                                         <a href="index.html"><img src="assets/images/logo/logo-white.png" alt="Brand Logo"></a>
                                     </div>
-                                    <p>Discover culinary delights recipes 
-                                        and inspiration in our delightful 
+                                    <p>Discover culinary delights recipes
+                                        and inspiration in our delightful
                                         food haven..</p>
                                     <ul class="social-link">
                                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -175,7 +176,7 @@
                                     <ul class="address-list">
                                         <li>1901 Thornridge Cir. Shiloh, Hawaii 81063</li>
                                         <li><a href="tel:+88-344-667-999">+88-344-667-999</a></li>
-                                        <li><a href="mailto:order@barger.com">order@foodix.com</a></li>		
+                                        <li><a href="mailto:order@barger.com">order@foodix.com</a></li>
                                     </ul>
                                 </div>
                             </div>

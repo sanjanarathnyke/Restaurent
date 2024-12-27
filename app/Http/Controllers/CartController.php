@@ -18,7 +18,60 @@ class CartController extends Controller
         return response()->json($cart);
     }
 
+    public function update(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        $itemId = $request->id;
+        $quantity = $request->quantity;
 
+        // Fetch the current price from the database or another reliable source
+        $item = MenuItem::find($itemId); // Replace Product with your model name
+
+        if (!$item) {
+            return response()->json(['success' => false, 'message' => 'Item not found'], 404);
+        }
+
+        if ($quantity > 0) {
+            // Update quantity and price in the session
+            $cart[$itemId] = [
+                'id' => $itemId,
+                'name' => $item->name,
+                'image' => $item->image, // Include other attributes if needed
+                'price' => $item->price, // Update the price
+                'quantity' => $quantity,
+            ];
+        } else {
+            unset($cart[$itemId]); // Remove item if quantity is 0
+        }
+
+        session()->put('cart', $cart);
+
+        // Calculate new totals
+        $subtotal = array_reduce($cart, function ($carry, $cartItem) {
+            return $carry + ($cartItem['price'] * $cartItem['quantity']);
+        }, 0);
+
+        return response()->json([
+            'success' => true,
+            'cart' => $cart,
+            'subtotal' => $subtotal,
+            'orderTotal' => $subtotal + 50, // Add shipping or other charges
+        ]);
+    }
+
+    public function delete(Request $request)
+    {
+        dd($request->all());
+        $cart = session()->get('cart', []);
+        $itemId = $request->id;
+
+        if (isset($cart[$itemId])) {
+            unset($cart[$itemId]);
+            session()->put('cart', $cart);
+        }
+
+        return response()->json(['success' => true]);
+    }
     public function addToCart(Request $request)
     {
         // Get the item details
@@ -34,6 +87,7 @@ class CartController extends Controller
         } else {
             // Add a new item to the cart
             $cart[$menuItem->id] = [
+                'id' => $menuItem->id,
                 'name' => $menuItem->name,
                 'price' => $menuItem->price,
                 'quantity' => 1,
@@ -76,8 +130,6 @@ class CartController extends Controller
 
             // Update the session
             session()->put('cart', $cart);
-
-            dd(session('cart'));
 
             return response()->json(['success' => true]);
         }

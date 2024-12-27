@@ -36,20 +36,6 @@
                         </table>
                     </div>
                 </div>
-                <div class="cart-middle mt-40 wow fadeInUp">
-                    <div class="row">
-                        <div class="col-lg-7">
-
-                            <div class="col-lg-5">
-                                <div class="update-cart float-lg-right mb-30">
-                                    <button class="theme-btn style-one" id="update-cart">Update Cart</button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
             </div>
             <div class="col-xl-4">
                 <div class="shopping-cart-total mb-30 wow fadeInUp">
@@ -86,9 +72,9 @@
         fetch("{{ route('cart.items') }}")
             .then((response) => response.json())
             .then((data) => {
-                // Convert object to array
-                cart = Object.values(data);
+                cart = Object.values(data); // Convert object to array
                 renderCart();
+                updateTotals();
             })
             .catch((error) => console.error("Error fetching cart items:", error));
     }
@@ -104,6 +90,7 @@
                     <td colspan="5">Your cart is empty!</td>
                 </tr>
             `;
+            updateTotals();
             return;
         }
 
@@ -130,26 +117,64 @@
         });
     }
 
+    // Function to update totals dynamically
+    function updateTotals() {
+        const cartSubtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+        const shippingFee = 50; // Static shipping fee
+        const orderTotal = cartSubtotal + shippingFee;
+
+        document.getElementById("cart-subtotal").textContent = `$${cartSubtotal.toFixed(2)}`;
+        document.getElementById("order-total").textContent = `$${orderTotal.toFixed(2)}`;
+    }
+
+    // Update session with new quantity
+    function updateSessionQuantity(itemId, newQuantity) {
+        fetch("{{ route('cart.update') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({ id: itemId, quantity: newQuantity })
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    console.log("Session updated successfully");
+                } else {
+                    console.error("Failed to update session");
+                }
+            })
+            .catch((error) => console.error("Error updating session:", error));
+    }
+
     // Event listeners for cart actions
     document.getElementById("cart-items").addEventListener("click", (event) => {
         const index = event.target.closest("button")?.dataset.index;
 
         if (event.target.closest(".quantity-up")) {
             cart[index].quantity++;
+            updateSessionQuantity(cart[index].id, cart[index].quantity);
             renderCart();
+            updateTotals();
         } else if (event.target.closest(".quantity-down")) {
             if (cart[index].quantity > 1) {
                 cart[index].quantity--;
+                updateSessionQuantity(cart[index].id, cart[index].quantity);
             }
             renderCart();
+            updateTotals();
         } else if (event.target.closest(".remove-item")) {
-            cart.splice(index, 1); // Remove item
+            updateSessionQuantity(cart[index].id, 0); // Set quantity to 0 to remove`
+            cart.splice(index, 1); // Remove item from cart
             renderCart();
+            updateTotals();
         }
     });
 
     // Initial render
     fetchCartItems();
 </script>
+
 
 @endsection
