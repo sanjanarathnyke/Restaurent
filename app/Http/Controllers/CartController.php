@@ -105,6 +105,7 @@ class CartController extends Controller
     public function showCart()
     {
         $cart = session('cart', []); // Get cart from session
+        // dd($cart);
         $cartSubtotal = 0;
 
         // Calculate the cart subtotal by summing up the prices * quantities of items in the cart
