@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <label>Postcode / Zip*</label>
+                                                <label>Postcode / Zip</label>
                                                 <input type="text" class="form_control" name="postcode"
                                                     placeholder="Postcode / Zip">
                                             </div>
@@ -118,7 +118,12 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <button type="submit" class="theme-btn style-one">Submit</button>
+                                            <form action="{{ route('checkout') }}" method="POST">
+                                                @csrf
+                                                <!-- Form fields here -->
+                                                <button type="submit" class="theme-btn style-one">Submit</button>
+                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </form>
