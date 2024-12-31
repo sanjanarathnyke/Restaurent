@@ -123,7 +123,7 @@
                                                 <!-- Form fields here -->
                                                 <button type="submit" class="theme-btn style-one">Submit</button>
                                             </form>
-                                            
+
                                         </div>
                                     </div>
                                 </form>
@@ -165,53 +165,55 @@
                                 </div>
 
                                 <!--=== Payment Method ===-->
-                                <div class="payment-method mb-30 wow fadeInDown">
-                                    <h4 class="title mb-20">Payment Method</h4>
-                                    <ul id="paymentMethod" class="mb-20">
-                                        <!-- Default unchecked -->
-                                        <li class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="method1" checked>
-                                            <label class="form-check-label" for="method1" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse0">Cash On Delivery</label>
-                                            <div id="collapse0" class="collapse show" data-bs-parent="#paymentMethod">
-                                                <p>Pay with cash remains a simple and reliable choice, transcending the
-                                                    complexities of modern finance.</p>
-                                            </div>
-                                        </li>
-                                        <!-- Default unchecked -->
-                                        <li class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="method2">
-                                            <label class="form-check-label" for="method2" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse1">Direct Bank Transfer</label>
-                                            <div id="collapse1" class="collapse" data-bs-parent="#paymentMethod">
-                                                <p>Please proceed with your payment directly into our bank account.
-                                                    Kindly use your Order ID as the payment reference. Your order will
-                                                    be processed once the payment reflects in our account.</p>
-                                            </div>
-                                        </li>
-                                        <!-- Default unchecked -->
-                                        <li class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="method3">
-                                            <label class="form-check-label" for="method3" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse2">Paypal</label>
-                                            <div id="collapse2" class="collapse" data-bs-parent="#paymentMethod">
-                                                <p>You can make your payment via PayPal. If you don't have a PayPal
-                                                    account, you can use your credit card to complete the transaction.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <p>We will utilize your personal data to process your order, enhance your experience
-                                        on our website, and for other purposes outlined in our <a href="#">privacy
-                                            policy</a>.</p>
-                                    <form action="{{ route('showbill') }}" method="GET" target="_blank">
+                                <form action="{{ route('showbill') }}" method="GET" target="_blank">
+                                    <div class="payment-method mb-30 wow fadeInDown">
+                                        <h4 class="title mb-20">Payment Method</h4>
+                                        <ul id="paymentMethod" class="mb-20">
+                                            <!-- Cash On Delivery -->
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment_method"
+                                                    value="Cash On Delivery" id="method1" checked>
+                                                <label class="form-check-label" for="method1" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse0">Cash On Delivery</label>
+                                                <div id="collapse0" class="collapse show"
+                                                    data-bs-parent="#paymentMethod">
+                                                    <p>Pay with cash remains a simple and reliable choice, transcending
+                                                        the complexities of modern finance.</p>
+                                                </div>
+                                            </li>
+                                            <!-- Direct Bank Transfer -->
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment_method"
+                                                    value="Direct Bank Transfer" id="method2">
+                                                <label class="form-check-label" for="method2" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse1">Direct Bank Transfer</label>
+                                                <div id="collapse1" class="collapse" data-bs-parent="#paymentMethod">
+                                                    <p>Please proceed with your payment directly into our bank account.
+                                                        Kindly use your Order ID as the payment reference. Your order
+                                                        will be processed once the payment reflects in our account.</p>
+                                                </div>
+                                            </li>
+                                            <!-- Paypal -->
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment_method"
+                                                    value="Paypal" id="method3">
+                                                <label class="form-check-label" for="method3" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse2">Paypal</label>
+                                                <div id="collapse2" class="collapse" data-bs-parent="#paymentMethod">
+                                                    <p>You can make your payment via PayPal. If you don't have a PayPal
+                                                        account, you can use your credit card to complete the
+                                                        transaction.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <p>We will utilize your personal data to process your order, enhance your
+                                            experience on our website, and for other purposes outlined in our <a
+                                                href="#">privacy policy</a>.</p>
                                         <button type="submit" class="theme-btn style-one">Place Order</button>
-                                    </form>
+                                    </div>
+                                </form>
 
-                                </div>
+
 
                             </div>
                         </div>

@@ -45,6 +45,8 @@ Route::get('/show', [BillController::class, 'showBill'])->name('showbill');
 
 Route::post('/billing-details', [CustomerController::class, 'store'])->name('customer');
 
+Route::get('/bill', [CheckoutController::class, 'showBill'])->name('showbill');
+
 
 
 

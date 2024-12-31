@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant Bill</title>
-  <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -12,13 +11,13 @@
     <div class="w-100 mx-auto bg-white p-4 border">
       <!-- Restaurant Header -->
       <div class="text-center mb-4">
-        <h1 class="h4 font-weight-bold mb-1">Seaside Sushi House</h1>
+        <h1 class="h4 font-weight-bold mb-1">Café Modern Bites</h1>
         <p class="mb-1">1500 Main Ave</p>
         <p class="mb-1">Long Beach, CA 90712</p>
         <p class="mb-4">505-303-2993</p>
         
         <div class="border-top border-bottom py-2 mb-4">
-          <p class="mb-1">09/09/2020 06:45 AM</p>
+          <p class="mb-1">{{ now()->format('m/d/Y h:i A') }}</p>
           <p class="mb-0">TERMINAL 1</p>
         </div>
       </div>
@@ -34,21 +33,13 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($cartItems as $item)
             <tr>
-              <td>1</td>
-              <td>Rainbow Roll</td>
-              <td class="text-right">$15.95</td>
+              <td>{{ $item['quantity'] }}</td>
+              <td>{{ $item['name'] }}</td>
+              <td class="text-right">${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Spider Rolls</td>
-              <td class="text-right">$14.95</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>750mL Hakutsuru</td>
-              <td class="text-right">$39.95</td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -57,36 +48,21 @@
       <div class="border-top pt-4 mb-4">
         <div class="d-flex justify-content-between mb-2">
           <span>CART SUBTOTAL</span>
-          <span>$70.85</span>
+          <span>${{ number_format($subtotal, 2) }}</span>
         </div>
         <div class="d-flex justify-content-between mb-2">
           <span>SERVICE CHARGE</span>
-          <span>$50</span>
+          <span>${{ number_format($serviceCharge, 2) }}</span>
         </div>
         <div class="d-flex justify-content-between font-weight-bold mb-4">
           <span>ORDER TOTAL</span>
-          <span>$76.16</span>
+          <span>${{ number_format($total, 2) }}</span>
         </div>
       </div>
 
       <!-- Payment Info -->
       <div class="mb-4">
-        <p class="mb-2">PAYMENT TYPE: VISA Card</p>
-        <p class="mb-1">APP#: 11278860</p>
-        <p class="mb-1">REF#: 18623058</p>
-        <p class="mb-0">REC#: 0018</p>
-      </div>
-
-      <!-- Tip and Total Section -->
-      <div class="mb-4">
-        <div class="d-flex justify-content-between mb-2">
-          <span>TIP</span>
-          <div class="border-bottom w-50"></div>
-        </div>
-        <div class="d-flex justify-content-between">
-          <span>TOTAL</span>
-          <div class="border-bottom w-50"></div>
-        </div>
+        <p class="mb-2">PAYMENT TYPE: {{ $paymentMethod }}</p>
       </div>
 
       <!-- Signature Section -->
@@ -102,9 +78,8 @@
   </div>
 
   <!-- Bootstrap JS and dependencies (optional) -->
-  <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
-  <script src="{{ asset('js/popper.min.js') }}"></script>
-  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
