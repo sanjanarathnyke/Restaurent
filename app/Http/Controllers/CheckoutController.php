@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -32,6 +33,18 @@ class CheckoutController extends Controller
         // Retrieve the selected payment method
         $paymentMethod = $request->input('payment_method', 'Not specified');
 
+        // Save order details to the database using Eloquent
+        foreach ($cartItems as $item) {
+            Order::create([
+                'name' => $item['name'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+                'subtotal' => $subtotal,
+                'service_charge' => $serviceCharge,
+                'total' => $total,
+                'payment_method' => $paymentMethod,
+            ]);
+        }
 
         return view('bill', [
             'cartItems' => $cartItems,
