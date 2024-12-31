@@ -9,10 +9,10 @@ class CheckoutController extends Controller
     public function index(Request $request)
     {
 
-        $itemNames = explode(',', $request->input('items'));
-        $subtotal = $request->query('subtotal', 0);
-        $shipping = $request->query('shipping', 0);
-        $total = $request->query('total', 0);
+        $itemNames = explode(',', urldecode($request->get('items')));
+        $subtotal = (float) $request->get('subtotal', 0);
+        $total = (float) $request->get('total', 0);
+        $shipping = (float) $request->get('shipping', 50);
 
         return view('checkout', compact('itemNames', 'subtotal', 'shipping', 'total'));
     }

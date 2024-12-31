@@ -42,7 +42,7 @@
                     <h4 class="title">Cart Totals</h4>
                     <table class="table mb-25">
                         <tbody>
-                            <td style="padding-right: 20px;">Items</td>
+                            <td style="padding-right: 20px;">Item Name</td>
                             <td>
                                 @foreach ($cart as $item)
                                 {{ $item['name'] }}{{ !$loop->last ? ', ' : '' }}
@@ -69,6 +69,8 @@
                         data-items="{{ implode(',', array_column($cart, 'name')) }}">
                         Proceed to checkout
                     </button>
+
+
 
                 </div>
             </div>
@@ -189,15 +191,21 @@
 
 <script>
     document.getElementById('proceed-to-checkout').addEventListener('click', function () {
-        // Get values from data attributes
-        const cartSubtotal = this.getAttribute('data-subtotal');
-        const shippingFee = this.getAttribute('data-shipping');
-        const orderTotal = this.getAttribute('data-total');
-        const itemNames = this.getAttribute('data-items');
+    const cartSubtotal = parseFloat(this.getAttribute('data-subtotal')) || 0;
+    const shippingFee = parseFloat(this.getAttribute('data-shipping')) || 50;
+    const orderTotal = parseFloat(this.getAttribute('data-total')) || (cartSubtotal + shippingFee);
+    const itemNames = this.getAttribute('data-items');
 
-        // Redirect to the checkout page with query parameters
-        window.location.href = `/checkout?subtotal=${cartSubtotal}&shipping=${shippingFee}&total=${orderTotal}&items=${encodeURIComponent(itemNames)}`;
+    const params = new URLSearchParams({
+        subtotal: cartSubtotal.toFixed(2),
+        shipping: shippingFee.toFixed(2),
+        total: orderTotal.toFixed(2),
+        items: encodeURIComponent(itemNames)
     });
+
+    window.location.href = `/checkout?subtotal=${cartSubtotal}&shipping=${shippingFee}&total=${orderTotal}&items=${encodeURIComponent(itemNames)}`;
+
+});
 </script>
 
 

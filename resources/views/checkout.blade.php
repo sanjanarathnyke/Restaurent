@@ -140,10 +140,9 @@
                                                     <td style="padding-right: 20px;">Item Name</td>
                                                     <td>
                                                         @foreach ($itemNames as $name)
-                                                        {{ $name }}{{ !$loop->last ? ', ' : '' }}
+                                                            {{ $name }}{{ !$loop->last ? ', ' : '' }}
                                                         @endforeach
                                                     </td>
-
                                                 </tr>
                                                 <tr>
                                                     <td style="padding-right: 20px;">Cart Subtotal</td>
@@ -154,15 +153,14 @@
                                                     <td class="price">$50</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="total" style="padding-right: 20px;"><span>Order
-                                                            Total</span></td>
-                                                    <td class="total price"><span>${{ number_format($total, 2) }}</span>
-                                                    </td>
+                                                    <td class="total" style="padding-right: 20px;"><span>Order Total</span></td>
+                                                    <td class="total price"><span>${{ number_format($total, 2) }}</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                
 
                                 <!--=== Payment Method ===-->
                                 <form action="{{ route('showbill') }}" method="GET" target="_blank">
