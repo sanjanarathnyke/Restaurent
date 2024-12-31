@@ -43,6 +43,8 @@ Route::post('/book-table', [BookingTableController::class, 'store'])->name('book
 // Define the route for showing the bill page
 Route::get('/show', [BillController::class, 'showBill'])->name('showbill');
 
+Route::post('/billing-details', [CustomerController::class, 'store'])->name('customer');
+
 
 
 
