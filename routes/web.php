@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,21 @@ Route::get('/show', [BillController::class, 'showBill'])->name('showbill');
 Route::post('/billing-details', [CustomerController::class, 'store'])->name('customer');
 
 Route::get('/bill', [CheckoutController::class, 'showBill'])->name('showbill');
+
+// Route::get('/register',function(){
+//     return view('Roles.register');
+// });
+
+// Route::get('/login',function(){
+//     return view('Roles.login');
+// });
+
+
+Route::get('/register', [ParticipantController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('/register', [ParticipantController::class, 'register'])->name('register.submit');
+Route::get('/login', [ParticipantController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [ParticipantController::class, 'login'])->name('login.submit');
+
 
 
 
