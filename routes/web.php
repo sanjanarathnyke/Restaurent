@@ -56,7 +56,7 @@ Route::get('/bill', [CheckoutController::class, 'showBill'])->name('showbill');
 // });
 
 /* this troute is for the submit custoemer informations */
-// Route::post('/consumer/store', [ConsumerController::class, 'store'])->name('consumer.store');
+Route::post('/consumer/store', [ConsumerController::class, 'store'])->name('consumer.store');
 
 Route::get('/register', [ParticipantController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('/register', [ParticipantController::class, 'register'])->name('register.submit');

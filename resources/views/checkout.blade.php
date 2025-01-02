@@ -209,6 +209,34 @@
     </div>
 </section>
 <!--====== End Checkout Section ======-->
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(this);
+
+        fetch("{{ route('consumer.store') }}", {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value,
+            },
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert("Form submitted successfully!");
+                    // Optionally redirect or clear the form
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    });
+</script>
+
 
 
 @endsection
