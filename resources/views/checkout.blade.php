@@ -31,103 +31,90 @@
                     <!--=== Checkout Form ===-->
                     <form class="checkout-form">
                         <div class="row">
+                            {{--customer informations start---}}
                             <div class="col-xl-8">
                                 <h4 class="title mb-15">Billing Details</h4>
-                                <form action="#" method="POST">
+                                <form action="{{ route('consumer.store') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form_group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form_control" name="first_name"
-                                                    placeholder="First Name">
+                                                <input type="text" class="form_control" name="first_name" placeholder="First Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form_control" name="last_name"
-                                                    placeholder="Last Name">
+                                                <input type="text" class="form_control" name="last_name" placeholder="Last Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
                                                 <label>Company Name</label>
-                                                <input type="text" class="form_control" name="company_name"
-                                                    placeholder="Your Company Name">
+                                                <input type="text" class="form_control" name="company_name" placeholder="Your Company Name">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
                                                 <label>Address</label>
-                                                <input type="text" class="form_control" name="address_line1"
-                                                    placeholder="Street Address">
-                                                <input type="text" class="form_control" name="address_line2"
-                                                    placeholder="Apartment, suite, unit etc. (optional)">
+                                                <input type="text" class="form_control" name="address_line1" placeholder="Street Address" required>
+                                                <input type="text" class="form_control" name="address_line2" placeholder="Apartment, suite, unit etc. (optional)">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
                                                 <label>City</label>
-                                                <select class="form_control" name="city">
+                                                <select class="form_control" name="city" required>
                                                     <option value="">Select City</option>
                                                     <option value="kd">Kandy</option>
                                                     <option value="cmb">Colombo</option>
                                                     <option value="per">Peradeniya</option>
                                                     <option value="ne">Nuwaraeliya</option>
                                                     <option value="gl">Galle</option>
-                                                    <!-- Add more cities as needed -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
                                                 <label>Country*</label>
-                                                <select class="form_control" name="country">
+                                                <select class="form_control" name="country" required>
                                                     <option value="">Select Country</option>
                                                     <option value="US">United States</option>
                                                     <option value="UK">United Kingdom</option>
                                                     <option value="IN">India</option>
                                                     <option value="CA">Canada</option>
                                                     <option value="AU">Australia</option>
-                                                    <!-- Add more countries as needed -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
                                                 <label>Postcode / Zip</label>
-                                                <input type="text" class="form_control" name="postcode"
-                                                    placeholder="Postcode / Zip">
+                                                <input type="text" class="form_control" name="postcode" placeholder="Postcode / Zip">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
                                                 <label>Contact Info</label>
-                                                <input type="email" class="form_control" name="email"
-                                                    placeholder="Email Address">
-                                                <input type="text" class="form_control" name="phone"
-                                                    placeholder="Your Phone">
+                                                <input type="email" class="form_control" name="email" placeholder="Email Address" required>
+                                                <input type="text" class="form_control" name="phone" placeholder="Your Phone" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
                                                 <label>Order Notes (optional)</label>
-                                                <textarea name="order_note" class="form_control"
-                                                    placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                                <textarea name="order_note" class="form_control" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <form action="{{ route('checkout') }}" method="POST">
-                                                @csrf
-                                                <!-- Form fields here -->
-                                                <button type="submit" class="theme-btn style-one">Submit</button>
-                                            </form>
-
+                                            <button type="submit" class="theme-btn style-one">Submit</button>
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> 
+                            {{--customer information ends--}}
+
                             {{--checkout section--}}
                             <div class="col-xl-4">
                                 {{---form that needs to submit--}}

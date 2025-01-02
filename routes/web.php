@@ -5,7 +5,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingTableController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PaymentController;
@@ -44,7 +44,6 @@ Route::post('/book-table', [BookingTableController::class, 'store'])->name('book
 // Define the route for showing the bill page
 Route::get('/show', [BillController::class, 'showBill'])->name('showbill');
 
-Route::post('/billing-details', [CustomerController::class, 'store'])->name('customer');
 
 Route::get('/bill', [CheckoutController::class, 'showBill'])->name('showbill');
 
@@ -56,6 +55,8 @@ Route::get('/bill', [CheckoutController::class, 'showBill'])->name('showbill');
 //     return view('Roles.login');
 // });
 
+/* this troute is for the submit custoemer informations */
+// Route::post('/consumer/store', [ConsumerController::class, 'store'])->name('consumer.store');
 
 Route::get('/register', [ParticipantController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('/register', [ParticipantController::class, 'register'])->name('register.submit');

@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Consumer extends Model
 {
-    use HasFactory;
     protected $fillable = [
         'first_name',
         'last_name',
@@ -21,4 +19,5 @@ class Customer extends Model
         'phone',
         'order_note',
     ];
+    
 }
