@@ -62,6 +62,11 @@ Route::post('/register', [ParticipantController::class, 'register'])->name('regi
 Route::get('/login', [ParticipantController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [ParticipantController::class, 'login'])->name('login.submit');
 
+Route::get('/form',function(){
+    return view('form-submit');
+});
+
+Route::post('/menu_items', [MenuController::class, 'store'])->name('menu_items.store');
 
 
 

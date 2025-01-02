@@ -17,7 +17,8 @@
           </div>
 
           <div class="card-body">
-            <form>
+            <form method="POST" action="{{ route('menu_items.store') }}" enctype="multipart/form-data">
+              @csrf
               <div class="mb-4">
                 <h4 class="text-primary mb-3">Category Details</h4>
                 <div class="form-group">
@@ -25,6 +26,7 @@
                   <input type="text" 
                          class="form-control"
                          id="categoryName"
+                         name="categoryName"
                          placeholder="Enter category name" />
                 </div>
               </div>
@@ -37,6 +39,7 @@
                   <input type="text"
                          class="form-control"
                          id="menuItemName"
+                         name="menuItemName"
                          placeholder="Enter menu item name" />
                 </div>
 
@@ -44,6 +47,7 @@
                   <label for="description" class="form-label">Description</label>
                   <textarea class="form-control"
                             id="description"
+                            name="description"
                             rows="4"
                             placeholder="Enter description"></textarea>
                 </div>
@@ -57,6 +61,7 @@
                     <input type="number"
                            class="form-control"
                            id="price"
+                           name="price"
                            placeholder="Enter price" />
                   </div>
                 </div>
@@ -65,7 +70,8 @@
                   <label for="image" class="form-label">Upload Image</label>
                   <input type="file"
                          class="form-control"
-                         id="image" />
+                         id="image"
+                         name="image" />
                 </div>
               </div>
 
