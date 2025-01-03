@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\Consumer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ConsumerController extends Controller
 {
@@ -19,9 +21,11 @@ class ConsumerController extends Controller
             'phone' => 'required|string|max:15',
         ]);
     
-        Consumer::create($validated);
+        $consumer= Consumer::create($validated);
+
+        Mail::to($consumer->email)->send(new WelcomeMail($consumer->toArray()));
     
-        return response()->json(['success' => true, 'message' => 'Data saved successfully']);
+        return response()->json(['success' => true, 'message' => 'Data saved and email send successfully']);
     }
     
 }

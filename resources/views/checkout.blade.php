@@ -225,7 +225,7 @@
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
-                    alert("Form submitted successfully!");
+                    alert("Form submitted successfully! check your email to furhter informations");
                     // Optionally redirect or clear the form
                 } else {
                     alert("Error: " + data.message);
