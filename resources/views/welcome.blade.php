@@ -29,7 +29,7 @@
 
                             .</p>
                         <div class="hero-button wow fadeInUp" data-wow-delay=".75s">
-                            <a href="index.html" class="theme-btn style-one">Order Now</a>
+                            <a href="{{ route('menu') }}" class="theme-btn style-one">Order Now</a>
                         </div>
                     </div>
                 </div>

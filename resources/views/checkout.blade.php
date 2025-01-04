@@ -226,6 +226,8 @@
             .then((data) => {
                 if (data.success) {
                     alert("Form submitted successfully! check your email to furhter informations");
+
+                    this.reset();
                     // Optionally redirect or clear the form
                 } else {
                     alert("Error: " + data.message);
