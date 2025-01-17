@@ -28,7 +28,10 @@ class DashboardController extends Controller
         // Get the total count of categories
         $categoryCount = Category::count();
 
-        return view('dashboard', compact('menuItems', 'categoryCount'));
+        // Fetch the total count of menu items
+        $totalMenuItems = MenuItem::count();
+
+        return view('dashboard', compact('menuItems', 'categoryCount', 'totalMenuItems'));
     }
 
 
@@ -94,5 +97,4 @@ class DashboardController extends Controller
 
         return response()->json(['success' => false, 'message' => 'Item not found.']);
     }
-
 }

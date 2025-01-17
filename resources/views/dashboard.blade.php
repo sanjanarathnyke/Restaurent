@@ -14,7 +14,7 @@
 <body>
     <div class="d-flex">
         <!-- Sidebar -->
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 110vh;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <i class="fas fa-utensils me-2"></i>
                 <span class="fs-4">Restaurant Admin</span>
@@ -22,15 +22,9 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
+                    <a href="#" class="nav-link text-white">
                         <i class="fas fa-home me-2"></i>
                         Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                        <i class="fas fa-hamburger me-2"></i>
-                        Menu Items
                     </a>
                 </li>
                 <li>
@@ -74,15 +68,6 @@
         <div class="flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Menu Items Management</h2>
-                {{---search field strats--}}
-                <div class="input-group" style="width: 550px;">
-                    <input type="text" class="form-control" placeholder="Search items...">
-                    <button class="btn btn-outline-secondary" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                {{--search field end--}}
-
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
                     <i class="fas fa-plus me-2"></i>Add New Item
                 </button>
@@ -90,43 +75,31 @@
 
             <!-- Stats Cards -->
             <div class="row mb-4">
-                <div class="col-md-3">
-                    <div class="card bg-primary text-white">
+                <div class="col-md-3 mx-3">
+                    <div class="card bg-primary text-white mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Total Menu Items</h5>
-                            <h2>45</h2>
-                            <p class="card-text"><i class="fas fa-arrow-up me-2"></i>12% increase</p>
+                            <h2>{{ $totalMenuItems }}</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card bg-success text-white">
+                <div class="col-md-3 mx-5">
+                    <div class="card bg-success text-white mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Active Items</h5>
-                            <h2>38</h2>
-                            <p class="card-text"><i class="fas fa-check me-2"></i>84% of total</p>
+                            <h2>{{ $totalMenuItems }}</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card bg-warning text-dark">
+                <div class="col-md-3 mx-5">
+                    <div class="card bg-warning text-dark mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Categories</h5>
                             <h2>{{ $categoryCount }}</h2> <!-- Display the actual count -->
-                            <p class="card-text"><i class="fas fa-tag me-2"></i>All categories</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card bg-info text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">Special Items</h5>
-                            <h2>12</h2>
-                            <p class="card-text"><i class="fas fa-star me-2"></i>Featured items</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Menu Items Table -->
