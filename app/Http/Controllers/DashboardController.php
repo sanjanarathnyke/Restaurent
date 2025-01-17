@@ -20,6 +20,18 @@ class DashboardController extends Controller
         return view('dashboard', compact('categoryCount'));
     }
 
+    public function index(Request $request)
+    {
+        // Fetch menu items with their associated categories
+        $menuItems = MenuItem::with('category')->paginate(6);
+
+        // Get the total count of categories
+        $categoryCount = Category::count();
+
+        return view('dashboard', compact('menuItems', 'categoryCount'));
+    }
+
+
     // Function to handle saving the menu item
     public function saveMenuItem(Request $request)
     {
@@ -55,6 +67,19 @@ class DashboardController extends Controller
 
         // Return a success response
         return redirect()->back()->with('success', 'Category added successfully!');
+    }
+
+    //function to remove item form db   
+    public function deleteItem($id)
+    {
+        $item = MenuItem::find($id);
+
+        if ($item) {
+            $item->delete();
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Item not found.']);
     }
     
     

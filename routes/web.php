@@ -91,6 +91,8 @@ Route::get('/dashboard',[DashboardController::class,'categoryitems']);
 
 Route::post('/saveitems', [DashboardController::class, 'saveMenuItem'])->name('save-items');
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
+Route::delete('/delete-item/{id}', [DashboardController::class, 'deleteItem']);
 
 
