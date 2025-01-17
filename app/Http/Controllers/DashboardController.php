@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\MenuItem;
+use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -75,12 +75,24 @@ class DashboardController extends Controller
         $item = MenuItem::find($id);
 
         if ($item) {
+            // Get the associated category ID
+            $categoryId = $item->category_id;
+
+            // Delete the menu item
             $item->delete();
+
+            // Check if the category has no other menu items
+            $remainingItems = MenuItem::where('category_id', $categoryId)->count();
+
+            if ($remainingItems === 0) {
+                // Delete the category if no items are linked to it
+                Category::where('id', $categoryId)->delete();
+            }
+
             return response()->json(['success' => true]);
         }
 
         return response()->json(['success' => false, 'message' => 'Item not found.']);
     }
-    
-    
+
 }

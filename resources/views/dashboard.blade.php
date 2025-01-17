@@ -157,6 +157,17 @@
                                     <td>{{ $item->category->name ?? 'Uncategorized' }}</td>
                                     <td>${{ number_format($item->price, 2) }}</td>
                                     <td>
+
+                                        <button class="btn btn-sm btn-primary edit-btn" data-bs-toggle="modal"
+                                            data-bs-target="#editItemModal" data-id="{{ $item->id }}"
+                                            data-name="{{ $item->name }}"
+                                            data-category="{{ $item->category->name ?? 'Uncategorized' }}"
+                                            data-price="{{ $item->price }}" data-description="{{ $item->description }}"
+                                            data-image="{{ $item->image }}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+
+
                                         <button class="btn btn-sm btn-danger delete-btn" data-bs-toggle="modal"
                                             data-bs-target="#deleteItemModal" data-id="{{ $item->id }}"
                                             data-name="{{ $item->name }}">
