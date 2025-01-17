@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu_items', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('description');
-            $table->decimal('price', 8, 2);
-            $table->string('image');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
-        }); 
+        });
     }
 
     /**
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu_items');
+        Schema::dropIfExists('admins');
     }
 };

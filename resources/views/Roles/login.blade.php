@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="Roles.libraries.styles.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow">
-                    <div class="card-body p-4">
+
+<body>
+    <div class="container">
+        <div class="auth">
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light p-5">
+                        <div class="text-center mb-4">
+                            <img src="assets/images/logo/logo-main.png" alt="logo" class="mb-4">
+                            <h4>Hello! Let's get started</h4>
+                            <p class="text-muted">Sign in to continue.</p>
+                        </div>
                         <!-- Login Form -->
-                        <h2 class="text-center mb-4">Login</h2>
-                        <form action="{{ route('login.submit') }}" method="POST">
+                        <form action="{{ route('login') }}" method="GET">
                             @csrf
-                            <!-- Email field -->
+                            <!-- CSRF token for security -->
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="text" name="username" class="form-control form-control-lg"
+                                    id="exampleInputUsername1" placeholder="Username" value="{{ old('username') }}"
+                                    required>
                             </div>
-
-                            <!-- Password field -->
-                            <div class="mb-4">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="mb-3">
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    id="exampleInputPassword1" placeholder="Password" required>
                             </div>
-
-                            <!-- Buttons -->
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Login</button>
-                                <a href="{{ route('register.form') }}" class="btn btn-secondary">Register</a>
-                                <a href="{{ route('welcome') }}" class="btn btn-outline-success mt-2">Visit to Shop</a>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary w-100 py-2">SIGN IN</button>
+                            </div>
+                            <div class="text-center mt-4">
+                                <span class="text-muted">Don't have an account?</span>
+                                <a href="{{ route('role.register') }}" class="text-primary">Create</a>
                             </div>
                         </form>
+                        <!-- End of Login Form -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

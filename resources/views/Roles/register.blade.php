@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Registration Form</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <!-- Registration Form -->
-                        <h2 class="text-center mb-4">Registration</h2>
-                        <form action="{{ route('register.submit') }}" method="POST">
+
+<body>
+    <div class="container">
+        <div class="auth">
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light p-5">
+                        <div class="text-center mb-4">
+                            <img src="assets/images/logo/logo-main.png" alt="logo" class="mb-4">
+                            <h4>New here?</h4>
+                            <p class="text-muted">Signing up is easy. It only takes a few steps</p>
+                        </div>
+
+                        <!-- Display success message -->
+                        @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
+                        <!-- Display validation errors -->
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <form action="{{ route('register') }}" method="POST">
                             @csrf
-                            <!-- Username field -->
+                            <!-- CSRF Token for security -->
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" name="username" class="form-control form-control-lg"
+                                    id="exampleInputUsername1" placeholder="Username" value="{{ old('username') }}"
+                                    required>
                             </div>
-
-                            <!-- Email field -->
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" name="email" class="form-control form-control-lg"
+                                    id="exampleInputEmail1" placeholder="Email" value="{{ old('email') }}" required>
                             </div>
-
-                            <!-- Password field -->
-                            <div class="mb-4">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="mb-3">
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    id="exampleInputPassword1" placeholder="Password" required>
                             </div>
-
-                            <!-- Buttons -->
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                                <a href="{{ route('login.form') }}" class="btn btn-secondary">Login</a>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary w-100 py-2">SIGN UP</button>
+                            </div>
+                            <div class="text-center mt-4">
+                                <span class="text-muted">Already have an account?</span>
+                                <a href="{{ route('role.login') }}" class="text-primary">Login</a>
                             </div>
                         </form>
                     </div>
@@ -46,6 +69,8 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
