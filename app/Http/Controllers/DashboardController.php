@@ -97,4 +97,10 @@ class DashboardController extends Controller
 
         return response()->json(['success' => false, 'message' => 'Item not found.']);
     }
+
+    public function fetchorders()
+    {
+        $orders = Order::all();
+        return response()->json($orders);
+    }
 }

@@ -8,6 +8,7 @@
     <title>Restaurant Management Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </head>
 
@@ -28,7 +29,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white orders-link" data-bs-toggle="modal"
+                        data-bs-target="#ordersModal">
                         <i class="fas fa-shopping-cart me-2"></i>
                         Orders
                     </a>
@@ -71,6 +73,41 @@
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
                     <i class="fas fa-plus me-2"></i>Add New Item
                 </button>
+            </div>
+
+            <!-- Orders Modal table -->
+            <div class="modal fade" id="ordersModal" tabindex="-1" aria-labelledby="ordersModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ordersModalLabel">Orders</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Subtotal</th>
+                                            <th>Service Charge</th>
+                                            <th>Total</th>
+                                            <th>Payment Method</th>
+                                            <th>Timestamp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ordersTableBody">
+                                        <!-- Orders will be dynamically inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Stats Cards -->
@@ -374,5 +411,39 @@
 });
 
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchOrders();
+
+        function fetchOrders() {
+            fetch("{{ route('fetch-orders') }}")
+                .then(response => response.json())
+                .then(data => {
+                    const ordersTableBody = document.getElementById("ordersTableBody");
+                    ordersTableBody.innerHTML = ""; // Clear the table body
+
+                    data.forEach(order => {
+                        const row = `
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${order.name}</td>
+                                <td>${order.quantity}</td>
+                                <td>${order.price}</td>
+                                <td>${order.subtotal}</td>
+                                <td>${order.service_charge}</td>
+                                <td>${order.total}</td>
+                                <td>${order.payment_method}</td>
+                                <td>${new Date(order.created_at).toLocaleString()}</td>
+                            </tr>
+                        `;
+                        ordersTableBody.innerHTML += row;
+                    });
+                })
+                .catch(error => console.error("Error fetching orders:", error));
+        }
+    });
+</script>
+
 
 </html>

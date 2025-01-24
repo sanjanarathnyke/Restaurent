@@ -218,7 +218,7 @@
             <div class="copyright-area text-center">
                 <div class="container">
                     <div class="copyright-text">
-                        <p>&copy; 2024 All rights reserved design by Pixelfit</p>
+                        <p>&copy; 2024 All rights reserved design by Café Modern Bites</p>
                     </div>
                 </div>
             </div>

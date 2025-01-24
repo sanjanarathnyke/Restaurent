@@ -95,4 +95,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::delete('/delete-item/{id}', [DashboardController::class, 'deleteItem']);
 
-
+Route::get('/dashboard/getorders',[DashboardController::class,'fetchorders'])->name('fetch-orders');

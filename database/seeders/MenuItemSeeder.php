@@ -25,7 +25,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Tuna Nigiri',
             'description' => 'A sushi roll with colorful fish slices, usually tuna, salmon, and avocado.',
             'price' => 25.50,
-            'image' => 'assets/images/menu/menu-1.jpg',
+            'image' => 'assets/images/menu/menu-2.jpg',
             'category_id' => 1
         ]);
 
@@ -33,7 +33,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'California Roll',
             'description' => 'A sushi roll with colorful fish slices, usually tuna, salmon, and avocado.',
             'price' => 25.50,
-            'image' => 'assets/images/menu/menu-1.jpg',
+            'image' => 'assets/images/menu/menu-3   .jpg',
             'category_id' => 1
         ]);
 
@@ -42,7 +42,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Pepperoni Pizza',
             'description' => 'Classic pepperoni pizza with mozzarella and tomato sauce.',
             'price' => 9.00,
-            'image' => 'assets/images/menu/pizza-pepperoni.jpg',
+            'image' => 'assets/images/menu/menu-14.png',
             'category_id' => 2 // Pizza category
         ]);
 
@@ -50,7 +50,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'BBQ Pizza',
             'description' => 'Pizza with BBQ chicken, onions, and mozzarella cheese.',
             'price' => 17.00,
-            'image' => 'assets/images/menu/pizza-bbq.jpg',
+            'image' => 'assets/images/menu/menu-21.png',
             'category_id' => 2
         ]);
 
@@ -58,7 +58,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Mushroom Pizza',
             'description' => 'Pizza topped with mushrooms, mozzarella, and tomato sauce.',
             'price' => 8.50,
-            'image' => 'assets/images/menu/pizza-mushroom.jpg',
+            'image' => 'assets/images/menu/menu-3_4.jpg',
             'category_id' => 2
         ]);
 
@@ -67,7 +67,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Cheeseburger',
             'description' => 'Grilled beef patty with cheese, lettuce, and tomato.',
             'price' => 12.00,
-            'image' => 'assets/images/menu/burger-cheeseburger.jpg',
+            'image' => 'assets/images/menu/menu-2_3.png',
             'category_id' => 3 // Burger category
         ]);
 
@@ -75,7 +75,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'BBQ Bacon Burger',
             'description' => 'Burger with BBQ sauce, bacon, and cheddar cheese.',
             'price' => 7.50,
-            'image' => 'assets/images/menu/burger-bbq-bacon.jpg',
+            'image' => 'assets/images/menu/menu-2_1.png',
             'category_id' => 3
         ]);
 
@@ -83,7 +83,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Veggie Burger',
             'description' => 'Plant-based patty with lettuce, tomato, and avocado.',
             'price' => 11.50,
-            'image' => 'assets/images/menu/burger-veggie.jpg',
+            'image' => 'assets/images/menu/menu-2_2.png',
             'category_id' => 3
         ]);
 
@@ -92,7 +92,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'T-Bone Steak',
             'description' => 'Grilled T-Bone steak with garlic butter and herbs.',
             'price' => 30.00,
-            'image' => 'assets/images/menu/steak-tbone.jpg',
+            'image' => 'assets/images/menu/menu-1_10.jpg',
             'category_id' => 4 // Steak category
         ]);
 
@@ -100,7 +100,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Ribeye Steak',
             'description' => 'Juicy ribeye steak cooked to perfection with rosemary.',
             'price' => 35.00,
-            'image' => 'assets/images/menu/steak-ribeye.jpg',
+            'image' => 'assets/images/menu/menu-1_11.jpg',
             'category_id' => 4
         ]);
 
@@ -108,7 +108,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Sirloin Steak',
             'description' => 'Tender sirloin steak with a side of mashed potatoes.',
             'price' => 28.00,
-            'image' => 'assets/images/menu/steak-sirloin.jpg',
+            'image' => 'assets/images/menu/menu-1_12.jpg',
             'category_id' => 4
         ]);
 
@@ -117,7 +117,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Grilled Chicken',
             'description' => 'Grilled chicken breast served with steamed vegetables.',
             'price' => 20.00,
-            'image' => 'assets/images/menu/chicken-grilled.jpg',
+            'image' => 'assets/images/menu/menu-1_14.jpg',
             'category_id' => 5 // Chicken category
         ]);
 
@@ -125,7 +125,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Fried Chicken',
             'description' => 'Crispy fried chicken served with fries and coleslaw.',
             'price' => 18.50,
-            'image' => 'assets/images/menu/chicken-fried.jpg',
+            'image' => 'assets/images/menu/menu-1_13.jpg',
             'category_id' => 5
         ]);
 
@@ -133,7 +133,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Chicken Parmesan',
             'description' => 'Chicken breast topped with marinara sauce and mozzarella.',
             'price' => 22.00,
-            'image' => 'assets/images/menu/chicken-parmesan.jpg',
+            'image' => 'assets/images/menu/menu-1_15.jpg',
             'category_id' => 5
         ]);
 
@@ -141,7 +141,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Chocolate Fudge Cake',
             'description' => 'Rich and moist chocolate cake with layers of fudge.',
             'price' => 8.50,
-            'image' => 'assets/images/menu/cake-chocolate-fudge.jpg',
+            'image' => 'assets/images/menu/menu-1_16.jpg',
             'category_id' => 6 // Cake category
         ]);
 
@@ -149,7 +149,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Strawberry Cheesecake',
             'description' => 'A classic cheesecake with fresh strawberries on top.',
             'price' => 9.00,
-            'image' => 'assets/images/menu/cake-strawberry-cheesecake.jpg',
+            'image' => 'assets/images/menu/menu-1_18.jpg',
             'category_id' => 6 // Cake category
         ]);
 
@@ -165,7 +165,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Lemon Drizzle Cake',
             'description' => 'A zesty lemon sponge cake with a sugar glaze.',
             'price' => 7.50,
-            'image' => 'assets/images/menu/cake-lemon-drizzle.jpg',
+            'image' => 'assets/images/menu/menu-1_17.jpg',
             'category_id' => 6 // Cake category
         ]);
 
@@ -240,7 +240,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Sizzling Chicken Fajitas',
             'description' => 'Grilled chicken served sizzling hot with bell peppers and onions.',
             'price' => 45.50,
-            'image' => 'assets/images/menu/sizzling-chicken-fajitas.jpg',
+            'image' => 'assets/images/menu/menu-2_7.png',
             'category_id' => 9 // Assuming 'Sizzling' has an ID of 9
         ]);
         
@@ -248,7 +248,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Sizzling Garlic Shrimp',
             'description' => 'Succulent shrimp sautéed with garlic, butter, and herbs on a sizzling plate.',
             'price' => 52.00,
-            'image' => 'assets/images/menu/sizzling-garlic-shrimp.jpg',
+            'image' => 'assets/images/menu/menu-2_8.png',
             'category_id' => 9 // Assuming 'Sizzling' has an ID of 9
         ]);
         
@@ -256,7 +256,7 @@ class MenuItemSeeder extends Seeder
             'name' => 'Sizzling Pork Chop',
             'description' => 'Juicy pork chop served sizzling with a side of mashed potatoes and grilled veggies.',
             'price' => 60.75,
-            'image' => 'assets/images/menu/sizzling-pork-chop.jpg',
+            'image' => 'assets/images/menu/menu-2_9.png',
             'category_id' => 9 // Assuming 'Sizzling' has an ID of 9
         ]);
         

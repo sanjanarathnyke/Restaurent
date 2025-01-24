@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('price', 8, 2);
             $table->decimal('subtotal', 10, 2);
             $table->decimal('service_charge', 10, 2);
-            $table->decimal('total', 10, 2);
+            $table->decimal('total', 10, 2);    
             $table->string('payment_method');
             $table->timestamps();
         });
