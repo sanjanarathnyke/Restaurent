@@ -9,6 +9,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WelcomeController;
@@ -96,3 +97,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::delete('/delete-item/{id}', [DashboardController::class, 'deleteItem']);
 
 Route::get('/dashboard/getorders',[DashboardController::class,'fetchorders'])->name('fetch-orders');
+
+Route::get('/dashboard/chart',[orderController::class,'showChart'])->name('report');
