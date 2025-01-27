@@ -190,7 +190,7 @@
                 <!--=== Section Title ===-->
                 <div class="section-title text-center mb-50 wow fadeInDown">
                     <span class="sub-title">Our Latest menu</span>
-                    <h2>Today best offer</h2>
+                    <h2>Upcoming best offers</h2>
                     <p>Indulge in an array of meticulously crafted sushi rolls, artfully blending <br> fresh ingredients
                         for a delightful taste experience.</p>
                 </div>
