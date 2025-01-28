@@ -14,9 +14,7 @@ class ConsumerController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'address_line1' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
             'email' => 'required|email',
             'phone' => 'required|string|max:15',
         ]);
@@ -26,6 +24,12 @@ class ConsumerController extends Controller
         Mail::to($consumer->email)->send(new WelcomeMail($consumer->toArray()));
     
         return response()->json(['success' => true, 'message' => 'Data saved and email send successfully']);
+    }
+
+    public function Display()
+    {
+        $customers = Consumer::all();
+        return view('eligiblecustomers',compact('customers'));
     }
     
 }

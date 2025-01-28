@@ -36,15 +36,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="{{ route('showcustomers') }}" class="nav-link text-white">
                         <i class="fas fa-users me-2"></i>
-                        Customers
+                        Subscription List
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('report') }}" class="nav-link text-white">
-                        <i class="fas fa-chart-bar me-2"></i>
+                        <i class="fas fa-chart-pie me-2"></i>
                         Reports
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        <i class="fas fa-envelope me-2"></i>
+                        News
                     </a>
                 </li>
             </ul>

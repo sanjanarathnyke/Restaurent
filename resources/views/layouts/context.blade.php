@@ -119,6 +119,12 @@
                                     <li class="menu-item has-children"><a href="{{ route('checkout') }}">checkout</a>
 
                                     </li>
+                                    <li class="menu-item has-children"><a href="{{ route('register') }}">register</a>
+
+                                    </li>
+                                    <li class="menu-item has-children"><a href="#">login</a>
+
+                                    </li>
 
                                 </ul>
                             </nav>

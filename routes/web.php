@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BillController;
-use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingTableController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -10,8 +9,8 @@ use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\orderController;
-use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\RegisterdController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -51,21 +50,12 @@ Route::get('/show', [BillController::class, 'showBill'])->name('showbill');
 
 Route::get('/bill', [CheckoutController::class, 'showBill'])->name('showbill');
 
-// Route::get('/register',function(){
-//     return view('Roles.register');
-// });
-
-// Route::get('/login',function(){
-//     return view('Roles.login');
-// });
 
 /* this troute is for the submit custoemer informations */
 Route::post('/consumer/store', [ConsumerController::class, 'store'])->name('consumer.store');
 
-// Route::get('/register', [ParticipantController::class, 'showRegistrationForm'])->name('register.form');
-// Route::post('/register', [ParticipantController::class, 'register'])->name('register.submit');
-// Route::get('/login', [ParticipantController::class, 'showLoginForm'])->name('login.form');
-// Route::post('/login', [ParticipantController::class, 'login'])->name('login.submit');
+Route::get('/dashboard/customers',[ConsumerController::class,'Display'])->name('showcustomers');
+
 
 Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [AuthController::class, 'register']);
@@ -83,9 +73,7 @@ Route::get('/form',function(){
 
 Route::post('/menu_items', [MenuController::class, 'store'])->name('menu_items.store');
 
-// Route::get('/categories', function () {
-//     return Category::all();
-// });
+
 
 Route::get('/categories', [DashboardController::class, 'getCategories']);
 Route::get('/dashboard',[DashboardController::class,'categoryitems']);
@@ -99,3 +87,12 @@ Route::delete('/delete-item/{id}', [DashboardController::class, 'deleteItem']);
 Route::get('/dashboard/getorders',[DashboardController::class,'fetchorders'])->name('fetch-orders');
 
 Route::get('/dashboard/chart',[orderController::class,'showChart'])->name('report');
+
+
+
+// Route::post('/register',[RegisterdController::class,'store'])->name('register.store');
+
+Route::get('/reg',function(){
+    return view('register');
+});
+
