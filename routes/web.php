@@ -90,9 +90,3 @@ Route::get('/dashboard/chart',[orderController::class,'showChart'])->name('repor
 
 
 
-// Route::post('/register',[RegisterdController::class,'store'])->name('register.store');
-
-Route::get('/reg',function(){
-    return view('register');
-});
-
