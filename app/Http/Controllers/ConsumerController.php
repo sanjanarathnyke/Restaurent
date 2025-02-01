@@ -22,7 +22,7 @@ class ConsumerController extends Controller
     
         $consumer= Consumer::create($validated);
 
-        Mail::to($consumer->email)->send(new WelcomeMail($consumer->toArray()));
+        Mail::to($consumer->email)->queue(new WelcomeMail($consumer->toArray()));
     
         return response()->json(['success' => true, 'message' => 'Data saved and email send successfully']);
     }
@@ -47,7 +47,7 @@ class ConsumerController extends Controller
     $subscribers = Consumer::distinct()->pluck('email');
 
     foreach ($subscribers as $email) {
-        Mail::to($email)->send(new BulkMail($request->message));
+        Mail::to($email)->queue(new BulkMail($request->message));
     }
 
     return back()->with('success', 'Email sent successfully to all subscribers.');
