@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="{{ route('showmails') }}" class="nav-link text-white">
                         <i class="fas fa-envelope me-2"></i>
                         News
                     </a>

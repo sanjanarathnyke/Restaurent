@@ -89,4 +89,6 @@ Route::get('/dashboard/getorders',[DashboardController::class,'fetchorders'])->n
 Route::get('/dashboard/chart',[orderController::class,'showChart'])->name('report');
 
 
+Route::get('/dashboard/mails',[ConsumerController::class,'ViewPage'])->name('showmails');
 
+Route::post('/dashboard/sendmails',[ConsumerController::class,'sendEmail'])->name('send.email');

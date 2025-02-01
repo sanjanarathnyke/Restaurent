@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BulkMail;
 use App\Mail\WelcomeMail;
 use App\Models\Consumer;
 use Illuminate\Http\Request;
@@ -31,5 +32,26 @@ class ConsumerController extends Controller
         $customers = Consumer::all();
         return view('eligiblecustomers',compact('customers'));
     }
+
+    public function ViewPage()
+    {
+        return view('sendmails');
+    }
+
+    public function sendEmail(Request $request)
+{
+    $request->validate([
+        'message' => 'required|string',
+    ]);
+
+    $subscribers = Consumer::distinct()->pluck('email');
+
+    foreach ($subscribers as $email) {
+        Mail::to($email)->send(new BulkMail($request->message));
+    }
+
+    return back()->with('success', 'Email sent successfully to all subscribers.');
+}
+
     
 }
