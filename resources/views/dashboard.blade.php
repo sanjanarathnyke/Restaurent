@@ -53,6 +53,18 @@
                         News
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('showcharts') }}" class="nav-link text-white">
+                        <i class="fas fa-file-alt me-2"></i>
+                        Records
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('ontest') }}" class="nav-link text-white">
+                        <i class="fas fa-file-alt me-2"></i>
+                        predicstuffs_ontest
+                    </a>
+                </li>
             </ul>
             <hr>
             <div class="dropdown">

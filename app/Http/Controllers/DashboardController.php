@@ -103,4 +103,9 @@ class DashboardController extends Controller
         $orders = Order::all();
         return response()->json($orders);
     }
+
+    public function ontest()
+    {
+        return view('predict');
+    }
 }

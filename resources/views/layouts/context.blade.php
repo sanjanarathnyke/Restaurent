@@ -119,12 +119,6 @@
                                     <li class="menu-item has-children"><a href="{{ route('checkout') }}">checkout</a>
 
                                     </li>
-                                    <li class="menu-item has-children"><a href="{{ route('register') }}">register</a>
-
-                                    </li>
-                                    <li class="menu-item has-children"><a href="#">login</a>
-
-                                    </li>
 
                                 </ul>
                             </nav>
@@ -233,7 +227,9 @@
                                     <li>Tuesday<span>: 10.20am - 05.30pm </span></li>
                                     <li>Wednesday<span>: 10.30am - 05.50pm </span></li>
                                     <li>Thursday<span>: 11.00am - 07.10pm </span></li>
-                                    <li>Friday<span class="of-close">: Closed</span></li>
+                                    <li>Friday<span>:11.00am - 07.10pm</span></li>
+                                    <li>Sunday<span>:8.30am - 8.45pm</span></li>
+                                    <li>Saturday<span>:8.30am - 10.30pm</span></li>
                                 </ul>
                             </div>
                         </div>

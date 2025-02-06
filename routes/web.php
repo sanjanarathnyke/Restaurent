@@ -1,16 +1,18 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\BookingTableController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\RegisterdController;
+use App\Http\Controllers\SalesAnalyticsController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -57,12 +59,6 @@ Route::post('/consumer/store', [ConsumerController::class, 'store'])->name('cons
 Route::get('/dashboard/customers',[ConsumerController::class,'Display'])->name('showcustomers');
 
 
-Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [AuthController::class, 'register']);
-
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('login', [AuthController::class, 'login']);
-
 Route::get('dashboard', function () {
     return view('dashboard'); // Create a dashboard view
 })->middleware('is_admin')->name('dashboard');
@@ -88,7 +84,17 @@ Route::get('/dashboard/getorders',[DashboardController::class,'fetchorders'])->n
 
 Route::get('/dashboard/chart',[orderController::class,'showChart'])->name('report');
 
-
 Route::get('/dashboard/mails',[ConsumerController::class,'ViewPage'])->name('showmails');
 
 Route::post('/dashboard/sendmails',[ConsumerController::class,'sendEmail'])->name('send.email');
+
+Route::get('/dashboard/showcharts',function(){
+    return view('analyscharts');
+})->name('showcharts');
+
+
+/* new route paths*/
+Route::get('/predict-peak-times', [APIController::class, 'getPeakTimes']);
+Route::post('/peak-times',[APIController::class,'sendToFlaskAPI']);
+
+Route::get('/ontest',[DashboardController::class,'ontest'])->name('ontest');
