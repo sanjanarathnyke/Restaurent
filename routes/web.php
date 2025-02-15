@@ -96,8 +96,3 @@ Route::get('/dashboard/showcharts',function(){
 })->name('showcharts');
 
 
-/* new route paths*/
-Route::get('/predict-peak-times', [APIController::class, 'getPeakTimes']);
-Route::post('/peak-times',[APIController::class,'sendToFlaskAPI']);
-
-Route::get('/ontest',[DashboardController::class,'ontest'])->name('ontest');

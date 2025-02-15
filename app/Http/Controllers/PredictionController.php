@@ -1,6 +1,10 @@
-<? php
+<?php
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+
+use lluminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Http;
 
 class PredictionController extends Controller
