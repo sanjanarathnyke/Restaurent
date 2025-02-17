@@ -1,66 +1,119 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Smart Restaurant Website
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="#" target="_blank">
+    <img src="https://github.com/sanjanarathnyke/Restaurent/blob/main/public/assets/images/logo/logo-white.png" alt="Smart Restaurant Logo">
+  </a>
 </p>
 
-## About Laravel
+## Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a smart restaurant website project that integrates IoT technology to enhance the dining experience. The project is built using a combination of HTML, CSS, Blade, PHP, and JavaScript.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Online Menu:** View the restaurant's menu online with detailed descriptions and images.
+- **Table Reservation:** Easily reserve a table through the website.
+- **Order Management:** Manage orders efficiently with real-time updates.
+- **IoT Integration:** Utilize IoT devices to provide a seamless dining experience.
+- **Responsive Design:** The website is fully responsive and works on all devices.
+- **Prediction Model:** Predictive features powered by a machine learning model.
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+To get a local copy up and running, follow these simple steps.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP >= 7.4
+- Composer
+- Node.js & npm
+- Python >= 3.6 (for prediction feature)
 
-## Laravel Sponsors
+### Installation Steps
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Clone the repo
+   ```sh
+   git clone https://github.com/sanjanarathnyke/Restaurent.git
+   ```
 
-### Premium Partners
+2. Install Composer dependencies
+   ```sh
+   composer install
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+
+4. Copy the example environment file and modify it according to your setup
+   ```sh
+   cp .env.example .env
+   ```
+
+5. Generate an application key
+   ```sh
+   php artisan key:generate
+   ```
+
+6. Run the database migrations
+   ```sh
+   php artisan migrate
+   ```
+
+7. (Optional) Seed the database with sample data
+   ```sh
+   php artisan db:seed
+   ```
+
+8. Start the local development server
+   ```sh
+   php artisan serve
+   ```
+
+### Running Predictions
+
+To run the prediction model, follow these steps:
+
+1. Check out the `ML` branch
+   ```sh
+   git checkout ML
+   ```
+
+2. Copy the prediction file (`app.py`) to your local machine and navigate to the directory
+   ```sh
+   cp path/to/ML/app.py local_directory/
+   cd local_directory/
+   ```
+
+3. Install the required Python packages
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+4. Run the prediction script
+   ```sh
+   python app.py
+   ```
+
+   The prediction model will run on `http://localhost:5000`, and you should be able to see the prediction values in your terminal or browser.
+
+## Usage
+
+- Access the website at `http://localhost:8000`
+- Navigate through the menu, make reservations, manage orders, and view predictions.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See `LICENSE` for more information.
