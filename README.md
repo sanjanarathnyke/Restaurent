@@ -1,4 +1,4 @@
-# Smart Restaurant Website
+# Synaps's Website
 
 <p align="center">
   <a href="#" target="_blank">
